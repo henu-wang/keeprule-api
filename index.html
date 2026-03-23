@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeepRule Investment Principles API</title>
+    <meta name="description" content="Free API for investment principles from Buffett, Munger, Graham & more. 100+ curated quotes with author, category and source.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+        }
+
+        a { color: #58a6ff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header {
+            padding: 60px 0 40px;
+            text-align: center;
+            border-bottom: 1px solid #21262d;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #f0f6fc;
+            margin-bottom: 12px;
+        }
+
+        header h1 span { color: #58a6ff; }
+
+        header p {
+            font-size: 1.15rem;
+            color: #8b949e;
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 20px;
+            padding: 6px 16px;
+            font-size: 0.85rem;
+            color: #8b949e;
+            margin: 4px;
+        }
+
+        .badge strong { color: #58a6ff; }
+
+        section { padding: 48px 0; border-bottom: 1px solid #21262d; }
+        section:last-child { border-bottom: none; }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #f0f6fc;
+            margin-bottom: 20px;
+        }
+
+        .endpoints {
+            display: grid;
+            gap: 16px;
+        }
+
+        .endpoint {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+            transition: border-color 0.2s;
+        }
+
+        .endpoint:hover { border-color: #58a6ff; }
+
+        .endpoint-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .method {
+            background: #238636;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .endpoint-path {
+            font-family: 'SFMono-Regular', Consolas, monospace;
+            color: #f0f6fc;
+            font-size: 0.95rem;
+        }
+
+        .endpoint-desc {
+            color: #8b949e;
+            font-size: 0.9rem;
+        }
+
+        .code-block {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        .code-header {
+            background: #21262d;
+            padding: 8px 16px;
+            font-size: 0.8rem;
+            color: #8b949e;
+            font-family: 'SFMono-Regular', Consolas, monospace;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copy-btn {
+            background: #30363d;
+            border: 1px solid #484f58;
+            color: #c9d1d9;
+            padding: 2px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+        }
+
+        .copy-btn:hover { background: #484f58; }
+
+        pre {
+            padding: 16px;
+            overflow-x: auto;
+            font-family: 'SFMono-Regular', Consolas, monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .string { color: #a5d6ff; }
+        .key { color: #7ee787; }
+        .number { color: #79c0ff; }
+        .comment { color: #8b949e; }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .stat {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #58a6ff;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #8b949e;
+            margin-top: 4px;
+        }
+
+        .quote-card {
+            background: #161b22;
+            border-left: 3px solid #58a6ff;
+            border-radius: 0 8px 8px 0;
+            padding: 20px 24px;
+            margin: 20px 0;
+        }
+
+        .quote-text {
+            font-size: 1.1rem;
+            color: #f0f6fc;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .quote-author { color: #58a6ff; font-weight: 600; }
+
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            color: #484f58;
+            font-size: 0.85rem;
+        }
+
+        footer a { color: #58a6ff; }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.8rem; }
+            .container { padding: 0 16px; }
+            section { padding: 32px 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><span>KeepRule</span> Investment Principles API</h1>
+            <p>Free, open-source API serving curated investment wisdom from the world's greatest investors.</p>
+            <div>
+                <span class="badge"><strong>100</strong> Principles</span>
+                <span class="badge"><strong>18</strong> Investors</span>
+                <span class="badge"><strong>13</strong> Categories</span>
+                <span class="badge"><strong>Free</strong> & Open Source</span>
+            </div>
+        </header>
+
+        <section>
+            <h2>API Endpoints</h2>
+            <p style="color:#8b949e; margin-bottom: 16px;">Base URL: <code style="background:#21262d; padding:2px 8px; border-radius:4px;">https://henu-wang.github.io/keeprule-api</code></p>
+            <div class="endpoints">
+                <a href="api/principles.json" class="endpoint" style="text-decoration:none; color:inherit;">
+                    <div class="endpoint-header">
+                        <span class="method">GET</span>
+                        <span class="endpoint-path">/api/principles.json</span>
+                    </div>
+                    <div class="endpoint-desc">100 investment principles with author, category & source</div>
+                </a>
+                <a href="api/authors.json" class="endpoint" style="text-decoration:none; color:inherit;">
+                    <div class="endpoint-header">
+                        <span class="method">GET</span>
+                        <span class="endpoint-path">/api/authors.json</span>
+                    </div>
+                    <div class="endpoint-desc">List of 18 legendary investors with biography info</div>
+                </a>
+                <a href="api/categories.json" class="endpoint" style="text-decoration:none; color:inherit;">
+                    <div class="endpoint-header">
+                        <span class="method">GET</span>
+                        <span class="endpoint-path">/api/categories.json</span>
+                    </div>
+                    <div class="endpoint-desc">13 investment principle categories with descriptions</div>
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <h2>Quick Start</h2>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span>cURL</span>
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                </div>
+                <pre><span class="comment"># Get all investment principles</span>
+curl https://henu-wang.github.io/keeprule-api/api/principles.json</pre>
+            </div>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span>JavaScript</span>
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                </div>
+                <pre><span class="comment">// Fetch principles and get a random one</span>
+<span class="key">const</span> res = <span class="key">await</span> fetch(<span class="string">'https://henu-wang.github.io/keeprule-api/api/principles.json'</span>);
+<span class="key">const</span> data = <span class="key">await</span> res.json();
+
+<span class="comment">// Random principle</span>
+<span class="key">const</span> random = data.principles[Math.floor(Math.random() * data.total)];
+console.log(<span class="string">`"${random.text}" — ${random.author}`</span>);
+
+<span class="comment">// Filter by author</span>
+<span class="key">const</span> buffett = data.principles.filter(p => p.author === <span class="string">'Warren Buffett'</span>);
+
+<span class="comment">// Filter by category</span>
+<span class="key">const</span> risk = data.principles.filter(p => p.category === <span class="string">'Risk Management'</span>);</pre>
+            </div>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span>Python</span>
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                </div>
+                <pre><span class="key">import</span> requests, random
+
+data = requests.get(<span class="string">'https://henu-wang.github.io/keeprule-api/api/principles.json'</span>).json()
+
+<span class="comment"># Random principle</span>
+p = random.choice(data[<span class="string">'principles'</span>])
+print(<span class="string">f'"{p["text"]}" — {p["author"]}'</span>)
+
+<span class="comment"># Filter by author</span>
+munger = [p <span class="key">for</span> p <span class="key">in</span> data[<span class="string">'principles'</span>] <span class="key">if</span> p[<span class="string">'author'</span>] == <span class="string">'Charlie Munger'</span>]</pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>Sample Response</h2>
+            <div class="code-block">
+                <div class="code-header"><span>JSON</span></div>
+                <pre>{
+  <span class="key">"total"</span>: <span class="number">100</span>,
+  <span class="key">"source"</span>: <span class="string">"https://keeprule.com"</span>,
+  <span class="key">"principles"</span>: [
+    {
+      <span class="key">"id"</span>: <span class="number">1</span>,
+      <span class="key">"text"</span>: <span class="string">"Rule No. 1: Never lose money. Rule No. 2: Never forget Rule No. 1."</span>,
+      <span class="key">"author"</span>: <span class="string">"Warren Buffett"</span>,
+      <span class="key">"category"</span>: <span class="string">"Risk Management"</span>,
+      <span class="key">"source"</span>: <span class="string">"Berkshire Hathaway Annual Meeting"</span>
+    }
+  ]
+}</pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>Random Principle</h2>
+            <div class="quote-card" id="randomQuote">
+                <div class="quote-text" id="quoteText">Loading...</div>
+                <div><span class="quote-author" id="quoteAuthor"></span> <span id="quoteCategory" style="color:#8b949e;"></span></div>
+            </div>
+            <button onclick="loadRandomQuote()" style="background:#21262d; border:1px solid #30363d; color:#c9d1d9; padding:8px 20px; border-radius:6px; cursor:pointer; font-size:0.9rem;">New Principle</button>
+        </section>
+
+        <section>
+            <h2>Stats</h2>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">100</div>
+                    <div class="stat-label">Principles</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">18</div>
+                    <div class="stat-label">Investors</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">13</div>
+                    <div class="stat-label">Categories</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Cost ($)</div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Built with care by <a href="https://keeprule.com">KeepRule</a></p>
+            <p style="margin-top: 8px;">Free to use for personal and commercial projects. Not financial advice.</p>
+            <p style="margin-top: 8px;"><a href="https://github.com/henu-wang/keeprule-api">GitHub</a></p>
+        </footer>
+    </div>
+
+    <script>
+        let principlesData = null;
+
+        async function loadPrinciples() {
+            try {
+                const res = await fetch('api/principles.json');
+                principlesData = await res.json();
+                loadRandomQuote();
+            } catch (e) {
+                document.getElementById('quoteText').textContent = '"Rule No. 1: Never lose money. Rule No. 2: Never forget Rule No. 1."';
+                document.getElementById('quoteAuthor').textContent = '— Warren Buffett';
+                document.getElementById('quoteCategory').textContent = '| Risk Management';
+            }
+        }
+
+        function loadRandomQuote() {
+            if (!principlesData) return;
+            const p = principlesData.principles[Math.floor(Math.random() * principlesData.total)];
+            document.getElementById('quoteText').textContent = `"${p.text}"`;
+            document.getElementById('quoteAuthor').textContent = `— ${p.author}`;
+            document.getElementById('quoteCategory').textContent = `| ${p.category}`;
+        }
+
+        function copyCode(btn) {
+            const pre = btn.closest('.code-block').querySelector('pre');
+            navigator.clipboard.writeText(pre.textContent);
+            btn.textContent = 'Copied!';
+            setTimeout(() => btn.textContent = 'Copy', 2000);
+        }
+
+        loadPrinciples();
+    </script>
+</body>
+</html>

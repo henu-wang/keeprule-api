@@ -1,0 +1,132 @@
+{
+  "total": 20,
+  "source": "https://keeprule.com",
+  "authors": [
+    {
+      "id": 1,
+      "name": "Warren Buffett",
+      "title": "Chairman & CEO, Berkshire Hathaway",
+      "known_for": "Value Investing, Long-term Holding",
+      "principles_count": 20
+    },
+    {
+      "id": 2,
+      "name": "Charlie Munger",
+      "title": "Vice Chairman, Berkshire Hathaway",
+      "known_for": "Mental Models, Multidisciplinary Thinking",
+      "principles_count": 13
+    },
+    {
+      "id": 3,
+      "name": "Benjamin Graham",
+      "title": "Father of Value Investing",
+      "known_for": "Margin of Safety, Security Analysis",
+      "principles_count": 10
+    },
+    {
+      "id": 4,
+      "name": "Philip Fisher",
+      "title": "Growth Investing Pioneer",
+      "known_for": "Scuttlebutt Method, Growth Investing",
+      "principles_count": 7
+    },
+    {
+      "id": 5,
+      "name": "Peter Lynch",
+      "title": "Former Manager, Fidelity Magellan Fund",
+      "known_for": "Invest in What You Know, Tenbaggers",
+      "principles_count": 10
+    },
+    {
+      "id": 6,
+      "name": "Howard Marks",
+      "title": "Co-Chairman, Oaktree Capital Management",
+      "known_for": "Second-Level Thinking, Risk Management",
+      "principles_count": 10
+    },
+    {
+      "id": 7,
+      "name": "Ray Dalio",
+      "title": "Founder, Bridgewater Associates",
+      "known_for": "Principles-Based Investing, All Weather Portfolio",
+      "principles_count": 10
+    },
+    {
+      "id": 8,
+      "name": "John Templeton",
+      "title": "Founder, Templeton Growth Fund",
+      "known_for": "Global Investing, Contrarian Approach",
+      "principles_count": 4
+    },
+    {
+      "id": 9,
+      "name": "Albert Einstein",
+      "title": "Theoretical Physicist",
+      "known_for": "Compound Interest Insight",
+      "principles_count": 1
+    },
+    {
+      "id": 10,
+      "name": "Robert Arnott",
+      "title": "Founder, Research Affiliates",
+      "known_for": "Smart Beta, Fundamental Indexing",
+      "principles_count": 1
+    },
+    {
+      "id": 11,
+      "name": "Cullen Roche",
+      "title": "Founder, Orcam Financial Group",
+      "known_for": "Pragmatic Capitalism",
+      "principles_count": 1
+    },
+    {
+      "id": 12,
+      "name": "William J. O'Neil",
+      "title": "Founder, Investor's Business Daily",
+      "known_for": "CAN SLIM Strategy",
+      "principles_count": 1
+    },
+    {
+      "id": 13,
+      "name": "Alexander Elder",
+      "title": "Professional Trader & Author",
+      "known_for": "Trading Psychology",
+      "principles_count": 1
+    },
+    {
+      "id": 14,
+      "name": "John Maynard Keynes",
+      "title": "Economist",
+      "known_for": "Macroeconomics, Market Psychology",
+      "principles_count": 1
+    },
+    {
+      "id": 15,
+      "name": "Joel Greenblatt",
+      "title": "Founder, Gotham Capital",
+      "known_for": "Magic Formula Investing",
+      "principles_count": 1
+    },
+    {
+      "id": 16,
+      "name": "Seth Klarman",
+      "title": "CEO, Baupost Group",
+      "known_for": "Margin of Safety, Value Investing",
+      "principles_count": 1
+    },
+    {
+      "id": 17,
+      "name": "George Soros",
+      "title": "Founder, Soros Fund Management",
+      "known_for": "Reflexivity Theory, Macro Trading",
+      "principles_count": 2
+    },
+    {
+      "id": 18,
+      "name": "Benjamin Franklin",
+      "title": "Founding Father & Polymath",
+      "known_for": "Wisdom on Knowledge & Investment",
+      "principles_count": 1
+    }
+  ]
+}

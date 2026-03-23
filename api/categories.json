@@ -1,0 +1,84 @@
+{
+  "total": 15,
+  "source": "https://keeprule.com",
+  "categories": [
+    {
+      "id": 1,
+      "name": "Risk Management",
+      "description": "Principles about identifying, assessing, and mitigating investment risks",
+      "principles_count": 14
+    },
+    {
+      "id": 2,
+      "name": "Value Investing",
+      "description": "Core value investing principles: margin of safety, intrinsic value, and buying below value",
+      "principles_count": 12
+    },
+    {
+      "id": 3,
+      "name": "Market Psychology",
+      "description": "Understanding market emotions, crowd behavior, and psychological biases",
+      "principles_count": 13
+    },
+    {
+      "id": 4,
+      "name": "Long-term Thinking",
+      "description": "The power of patience, compounding, and thinking in decades",
+      "principles_count": 11
+    },
+    {
+      "id": 5,
+      "name": "Mental Models",
+      "description": "Frameworks for better thinking and decision-making in investing",
+      "principles_count": 7
+    },
+    {
+      "id": 6,
+      "name": "Decision Making",
+      "description": "How to make better investment decisions under uncertainty",
+      "principles_count": 8
+    },
+    {
+      "id": 7,
+      "name": "Circle of Competence",
+      "description": "Knowing your limits and investing within your area of expertise",
+      "principles_count": 4
+    },
+    {
+      "id": 8,
+      "name": "Portfolio Management",
+      "description": "Diversification, position sizing, and portfolio construction",
+      "principles_count": 4
+    },
+    {
+      "id": 9,
+      "name": "Business Quality",
+      "description": "Evaluating competitive advantages, moats, and management quality",
+      "principles_count": 3
+    },
+    {
+      "id": 10,
+      "name": "Self-improvement",
+      "description": "Continuous learning, self-awareness, and personal growth for investors",
+      "principles_count": 7
+    },
+    {
+      "id": 11,
+      "name": "Contrarian Thinking",
+      "description": "Going against the crowd when fundamentals support it",
+      "principles_count": 6
+    },
+    {
+      "id": 12,
+      "name": "Research",
+      "description": "Due diligence, fundamental analysis, and information gathering",
+      "principles_count": 4
+    },
+    {
+      "id": 13,
+      "name": "Compounding",
+      "description": "The power of compound returns over time",
+      "principles_count": 1
+    }
+  ]
+}
